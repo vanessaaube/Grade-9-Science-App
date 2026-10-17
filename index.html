@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="A mobile-friendly Grade 9 Science quiz about the first 30 elements of the periodic table.">
+  <title>Element Quest — Grade 9 Science Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="quiz-card" aria-labelledby="app-title">
+      <header class="brand-bar">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="brand-number">9</span>
+          <span class="brand-symbol">Sc</span>
+        </div>
+        <div>
+          <p class="eyebrow">Grade 9 Science</p>
+          <h1 id="app-title">Element Quest</h1>
+        </div>
+      </header>
+
+      <div id="start-screen" class="screen active">
+        <div class="hero-visual" aria-hidden="true">
+          <div class="atom-orbit orbit-one"><span></span></div>
+          <div class="atom-orbit orbit-two"><span></span></div>
+          <div class="atom-orbit orbit-three"><span></span></div>
+          <div class="atom-core">30</div>
+        </div>
+        <p class="kicker">First 30 elements</p>
+        <h2>Ready to test your periodic-table skills?</h2>
+        <p class="screen-copy">Answer 10 randomly selected questions. Each round mixes symbols, element names, tricky pairings, and mystery clues.</p>
+        <div class="feature-row" aria-label="Quiz details">
+          <div><strong>10</strong><span>questions</span></div>
+          <div><strong>5</strong><span>question types</span></div>
+          <div><strong>∞</strong><span>new rounds</span></div>
+        </div>
+        <button id="start-button" class="primary-button" type="button">Start Quiz <span aria-hidden="true">→</span></button>
+      </div>
+
+      <div id="quiz-screen" class="screen" aria-live="polite">
+        <div class="quiz-status">
+          <div>
+            <span class="status-label">Question</span>
+            <strong><span id="question-number">1</span> / <span id="question-total">10</span></strong>
+          </div>
+          <div class="score-pill">
+            <span class="status-label">Score</span>
+            <strong id="score">0</strong>
+          </div>
+        </div>
+
+        <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="1">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <div class="question-area">
+          <span id="question-type" class="question-type">Name → Symbol</span>
+          <h2 id="question-text">Question text</h2>
+          <p id="question-hint" class="question-hint"></p>
+        </div>
+
+        <div id="answer-list" class="answer-list" role="group" aria-labelledby="question-text"></div>
+
+        <div id="feedback" class="feedback" role="status" aria-live="assertive" hidden>
+          <div id="feedback-icon" class="feedback-icon" aria-hidden="true"></div>
+          <div>
+            <strong id="feedback-title"></strong>
+            <p id="feedback-text"></p>
+          </div>
+        </div>
+
+        <button id="next-button" class="primary-button next-button" type="button" hidden>Next Question <span aria-hidden="true">→</span></button>
+      </div>
+
+      <div id="result-screen" class="screen" aria-live="polite">
+        <div id="result-badge" class="result-badge" aria-hidden="true">★</div>
+        <p class="kicker">Round complete</p>
+        <h2 id="result-heading">Great work!</h2>
+        <div class="score-ring" aria-label="Final score">
+          <span id="final-score">0</span>
+          <small>/ 10</small>
+        </div>
+        <p id="result-message" class="screen-copy"></p>
+        <div class="result-stats">
+          <div><span id="correct-count">0</span><small>Correct</small></div>
+          <div><span id="incorrect-count">0</span><small>Review</small></div>
+          <div><span id="percent-score">0%</span><small>Score</small></div>
+        </div>
+        <button id="play-again-button" class="primary-button" type="button">Play Again <span aria-hidden="true">↻</span></button>
+        <button id="review-button" class="text-button" type="button">Review the first 30 elements</button>
+      </div>
+
+      <div id="study-screen" class="screen">
+        <div class="study-header">
+          <div>
+            <p class="kicker">Quick reference</p>
+            <h2>The first 30 elements</h2>
+          </div>
+          <button id="close-study-button" class="icon-button" type="button" aria-label="Close element reference">×</button>
+        </div>
+        <div id="element-grid" class="element-grid"></div>
+        <button id="study-play-button" class="primary-button" type="button">Start a New Round <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <p class="footer-note">Built for quick practice on any device.</p>
+  </main>
+
+  <noscript>This quiz needs JavaScript enabled to run.</noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>
