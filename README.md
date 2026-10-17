@@ -1,6 +1,6 @@
 # Element Quest — Grade 9 Science Quiz
 
-A polished, mobile-friendly quiz covering the first 30 elements of the periodic table. It is built with plain HTML, CSS, and JavaScript, so it can be hosted on any basic static website service.
+A polished, mobile-friendly Grade 9 Science quiz covering the names, symbols, and atomic numbers of the first 30 elements, plus physical and chemical properties, physical and chemical changes, mixtures, solutions, and separation methods. It is built with plain HTML, CSS, and JavaScript, so it can be hosted on any basic static website service.
 
 ## Run it
 
@@ -15,13 +15,10 @@ Upload the folder contents to any static host, including GitHub Pages, Netlify, 
 ## Included features
 
 - 10 questions per round, with a fresh randomized selection each time
-- 150 base question prompts (30 elements × 5 question types), with additional variation in choices and incorrect-pair combinations
-- Two questions from each category in every round:
-  - element name → symbol
-  - symbol → element name
-  - similar-symbol traps
-  - identify the incorrect pairing
-  - mystery-element clues
+- 210-question bank: 60 element-symbol recognition prompts, 120 atomic-number prompts, and 30 matter and mixtures questions
+- Each round includes one name → symbol question, one symbol → name question, four atomic-number questions (one in each direction), and four matter and mixtures questions
+- Atomic-number practice includes element name → atomic number, symbol → atomic number, atomic number → element name, and atomic number → symbol
+- Covers physical and chemical properties, homogeneous and heterogeneous mixtures, solutions, suspensions, changes, reaction evidence, pure substances, and separation methods
 - Immediate answer feedback and explanations
 - Running score and progress indicator
 - Final score screen and Play Again button

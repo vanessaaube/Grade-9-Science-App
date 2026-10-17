@@ -1,44 +1,229 @@
 "use strict";
 
 var elements = [
-  { n: 1,  name: "Hydrogen",  symbol: "H",  clue: "I am the lightest element, I fuel stars, and I am part of every water molecule." },
-  { n: 2,  name: "Helium",    symbol: "He", clue: "I am a non-reactive gas used in balloons, and my atomic number is 2." },
-  { n: 3,  name: "Lithium",   symbol: "Li", clue: "I am a soft alkali metal used in many rechargeable batteries." },
-  { n: 4,  name: "Beryllium", symbol: "Be", clue: "I am a light, strong metal found in the mineral beryl; my atomic number is 4." },
-  { n: 5,  name: "Boron",     symbol: "B",  clue: "I am a metalloid used in heat-resistant glass and borax." },
-  { n: 6,  name: "Carbon",    symbol: "C",  clue: "All known life contains me, and diamond and graphite are two of my forms." },
-  { n: 7,  name: "Nitrogen",  symbol: "N",  clue: "I make up about 78% of Earth's atmosphere." },
-  { n: 8,  name: "Oxygen",    symbol: "O",  clue: "Animals need me for cellular respiration, and I support combustion." },
-  { n: 9,  name: "Fluorine",  symbol: "F",  clue: "I am a highly reactive halogen; my compounds are used in many toothpastes." },
-  { n: 10, name: "Neon",      symbol: "Ne", clue: "I am a noble gas famous for the red-orange glow of advertising signs." },
-  { n: 11, name: "Sodium",    symbol: "Na", clue: "I combine with chlorine in table salt and produce a bright yellow flame." },
-  { n: 12, name: "Magnesium", symbol: "Mg", clue: "I burn with a brilliant white light and am found at the centre of chlorophyll." },
-  { n: 13, name: "Aluminum",  symbol: "Al", clue: "I am a lightweight metal commonly used in cans, foil, and aircraft." },
-  { n: 14, name: "Silicon",   symbol: "Si", clue: "I am a metalloid important in computer chips, glass, and many rocks." },
-  { n: 15, name: "Phosphorus",symbol: "P",  clue: "I am part of DNA and bones, and my compounds are widely used in fertilizers." },
-  { n: 16, name: "Sulfur",    symbol: "S",  clue: "I am a yellow non-metal; some of my compounds have a rotten-egg smell." },
-  { n: 17, name: "Chlorine",  symbol: "Cl", clue: "I am a greenish halogen used to disinfect pools and drinking water." },
-  { n: 18, name: "Argon",     symbol: "Ar", clue: "I am a non-reactive noble gas used in light bulbs and welding." },
-  { n: 19, name: "Potassium", symbol: "K",  clue: "My symbol comes from the word kalium, and I am an important nutrient found in bananas." },
-  { n: 20, name: "Calcium",   symbol: "Ca", clue: "I help build bones and teeth and am a major element in limestone." },
-  { n: 21, name: "Scandium",  symbol: "Sc", clue: "I am the first transition metal in this list and have atomic number 21." },
-  { n: 22, name: "Titanium",  symbol: "Ti", clue: "I am strong, light, and corrosion-resistant, so I am used in aircraft and implants." },
-  { n: 23, name: "Vanadium",  symbol: "V",  clue: "I am a transition metal often added to steel to make strong alloys." },
-  { n: 24, name: "Chromium",  symbol: "Cr", clue: "I give stainless steel corrosion resistance and make chrome plating shiny." },
-  { n: 25, name: "Manganese", symbol: "Mn", clue: "I help strengthen steel and am used in many dry-cell batteries." },
-  { n: 26, name: "Iron",      symbol: "Fe", clue: "I am used to make steel, I can rust, and I help blood carry oxygen." },
-  { n: 27, name: "Cobalt",    symbol: "Co", clue: "I am used in strong magnets, blue pigments, and vitamin B12." },
-  { n: 28, name: "Nickel",    symbol: "Ni", clue: "I am a corrosion-resistant metal used in stainless steel, coins, and batteries." },
-  { n: 29, name: "Copper",    symbol: "Cu", clue: "I am a reddish metal that conducts electricity well and is used in wiring." },
-  { n: 30, name: "Zinc",      symbol: "Zn", clue: "I protect steel from rust through galvanizing and combine with copper to make brass." }
+  { n: 1,  name: "Hydrogen",  symbol: "H" },
+  { n: 2,  name: "Helium",    symbol: "He" },
+  { n: 3,  name: "Lithium",   symbol: "Li" },
+  { n: 4,  name: "Beryllium", symbol: "Be" },
+  { n: 5,  name: "Boron",     symbol: "B" },
+  { n: 6,  name: "Carbon",    symbol: "C" },
+  { n: 7,  name: "Nitrogen",  symbol: "N" },
+  { n: 8,  name: "Oxygen",    symbol: "O" },
+  { n: 9,  name: "Fluorine",  symbol: "F" },
+  { n: 10, name: "Neon",      symbol: "Ne" },
+  { n: 11, name: "Sodium",    symbol: "Na" },
+  { n: 12, name: "Magnesium", symbol: "Mg" },
+  { n: 13, name: "Aluminum",  symbol: "Al" },
+  { n: 14, name: "Silicon",   symbol: "Si" },
+  { n: 15, name: "Phosphorus",symbol: "P" },
+  { n: 16, name: "Sulfur",    symbol: "S" },
+  { n: 17, name: "Chlorine",  symbol: "Cl" },
+  { n: 18, name: "Argon",     symbol: "Ar" },
+  { n: 19, name: "Potassium", symbol: "K" },
+  { n: 20, name: "Calcium",   symbol: "Ca" },
+  { n: 21, name: "Scandium",  symbol: "Sc" },
+  { n: 22, name: "Titanium",  symbol: "Ti" },
+  { n: 23, name: "Vanadium",  symbol: "V" },
+  { n: 24, name: "Chromium",  symbol: "Cr" },
+  { n: 25, name: "Manganese", symbol: "Mn" },
+  { n: 26, name: "Iron",      symbol: "Fe" },
+  { n: 27, name: "Cobalt",    symbol: "Co" },
+  { n: 28, name: "Nickel",    symbol: "Ni" },
+  { n: 29, name: "Copper",    symbol: "Cu" },
+  { n: 30, name: "Zinc",      symbol: "Zn" }
+];
+
+var matterQuestions = [
+  {
+    text: "What does a physical property of a substance describe?",
+    options: ["appearance and composition", "reactivity and stability", "colouration only", "size only"],
+    answer: "appearance and composition",
+    explanation: "A physical property describes characteristics that can be observed or measured without changing the substance into something new."
+  },
+  {
+    text: "Which of the following is true of different substances in mechanical mixtures?",
+    options: ["the substances are in different states", "the substances cannot be separated", "the substances look the same", "the substances are visible"],
+    answer: "the substances are visible",
+    explanation: "A mechanical mixture is heterogeneous, so its different substances can be seen as separate components."
+  },
+  {
+    text: "In what kind of mixture are the different substances invisible because the mixture looks the same throughout?",
+    options: ["Heterogeneous mixture", "Mechanical mixture", "Suspension", "Homogeneous mixture"],
+    answer: "Homogeneous mixture",
+    explanation: "A homogeneous mixture has a uniform appearance because its different substances are evenly mixed and not visibly distinct."
+  },
+  {
+    text: "Sodium metal reacts vigorously with water. What is this an example of?",
+    options: ["nuclear reaction", "chemical property", "physical property", "physical reaction"],
+    answer: "chemical property",
+    explanation: "Reactivity with water describes sodium's ability to undergo a chemical change, so it is a chemical property."
+  },
+  {
+    text: "A heterogeneous mixture has:",
+    options: ["at least two visible components", "a uniform distribution of a single phase", "at least two components that look like one substance", "only one component"],
+    answer: "at least two visible components",
+    explanation: "In a heterogeneous mixture, the composition is not uniform and at least two components can be distinguished."
+  },
+  {
+    text: "Rust forming on an old car is a ______ reaction, while melting ice is a change in a ______ property.",
+    options: ["mechanical; electrical", "physical; chemical", "chemical; physical", "physical; mechanical"],
+    answer: "chemical; physical",
+    explanation: "Rusting creates new substances and is chemical. Melting changes only the state of water and is physical."
+  },
+  {
+    text: "Which observation is a physical property of copper?",
+    options: ["It reacts with oxygen over time", "It conducts electricity", "It forms a green coating", "It reacts with nitric acid"],
+    answer: "It conducts electricity",
+    explanation: "Electrical conductivity can be measured without changing copper into a new substance, so it is a physical property."
+  },
+  {
+    text: "Which choice describes a chemical property?",
+    options: ["density", "melting point", "flammability", "colour"],
+    answer: "flammability",
+    explanation: "Flammability describes whether a substance can burn and form new substances, making it a chemical property."
+  },
+  {
+    text: "Which event is a physical change?",
+    options: ["wood burning", "iron rusting", "water freezing", "milk souring"],
+    answer: "water freezing",
+    explanation: "Freezing changes water's state but not its chemical identity."
+  },
+  {
+    text: "Which event is a chemical change?",
+    options: ["cutting paper", "dissolving sugar in water", "baking a cake", "crushing a can"],
+    answer: "baking a cake",
+    explanation: "Baking produces new substances through chemical reactions, so it is a chemical change."
+  },
+  {
+    text: "Which is the best example of a homogeneous mixture?",
+    options: ["salt water", "granite", "soil", "vegetable soup"],
+    answer: "salt water",
+    explanation: "Dissolved salt is distributed evenly through the water, creating a uniform homogeneous mixture."
+  },
+  {
+    text: "Which is the best example of a mechanical mixture?",
+    options: ["air", "clear vinegar", "trail mix", "salt water"],
+    answer: "trail mix",
+    explanation: "The different components of trail mix remain visible and can be separated mechanically."
+  },
+  {
+    text: "Which statement best describes a solution?",
+    options: ["It always contains a solid", "It is uniform throughout", "Its parts are easy to see", "It cannot contain water"],
+    answer: "It is uniform throughout",
+    explanation: "A solution is a homogeneous mixture with a uniform composition throughout."
+  },
+  {
+    text: "In salt water, which substance is the solvent?",
+    options: ["salt", "water", "sodium", "chlorine"],
+    answer: "water",
+    explanation: "The solvent is the substance that does the dissolving. In salt water, water dissolves the salt."
+  },
+  {
+    text: "In a sugar-water solution, which substance is the solute?",
+    options: ["sugar", "water", "the container", "both substances equally"],
+    answer: "sugar",
+    explanation: "The solute is the substance that is dissolved, so sugar is the solute."
+  },
+  {
+    text: "A mixture contains sand suspended in water and settles when left alone. What type of mixture is it?",
+    options: ["element", "solution", "suspension", "compound"],
+    answer: "suspension",
+    explanation: "A suspension contains visible particles that can settle out over time."
+  },
+  {
+    text: "What is the best method for separating sand from water?",
+    options: ["filtration", "melting", "magnetism", "freezing"],
+    answer: "filtration",
+    explanation: "A filter traps insoluble sand while allowing the water to pass through."
+  },
+  {
+    text: "What is the best method for recovering dissolved salt from salt water?",
+    options: ["using a magnet", "evaporating the water", "filtering the solution", "sieving the solution"],
+    answer: "evaporating the water",
+    explanation: "When the water evaporates, the dissolved salt remains behind."
+  },
+  {
+    text: "Which method could separate iron filings from sand?",
+    options: ["evaporation", "filtration", "magnetism", "distillation"],
+    answer: "magnetism",
+    explanation: "A magnet attracts the iron filings but not the sand."
+  },
+  {
+    text: "Which is evidence that a chemical reaction may have occurred?",
+    options: ["a solid is cut into pieces", "a substance changes state", "a gas forms unexpectedly", "an object changes shape"],
+    answer: "a gas forms unexpectedly",
+    explanation: "Unexpected gas production can indicate that new substances have formed in a chemical reaction."
+  },
+  {
+    text: "A new solid appears when two clear liquids are mixed. What is the new solid called?",
+    options: ["a solvent", "a precipitate", "a suspension", "an element"],
+    answer: "a precipitate",
+    explanation: "A precipitate is a solid that forms during a chemical reaction in a solution."
+  },
+  {
+    text: "Which property can be measured without changing the identity of a substance?",
+    options: ["reactivity with acid", "ability to rust", "density", "flammability"],
+    answer: "density",
+    explanation: "Density is a physical property because measuring it does not produce a new substance."
+  },
+  {
+    text: "Why is boiling water considered a physical change?",
+    options: ["A gas is always a new substance", "The water remains H₂O", "Heat causes a chemical reaction", "The water disappears permanently"],
+    answer: "The water remains H₂O",
+    explanation: "Boiling changes liquid water into water vapour, but both are still H₂O."
+  },
+  {
+    text: "Which statement compares pure substances and mixtures correctly?",
+    options: ["Only mixtures contain particles", "Pure substances have a fixed composition", "Mixtures cannot be separated", "Pure substances are always elements"],
+    answer: "Pure substances have a fixed composition",
+    explanation: "A pure substance has a fixed composition, while a mixture can contain substances in varying proportions."
+  },
+  {
+    text: "Which sample is a pure substance rather than a mixture?",
+    options: ["air", "distilled water", "soil", "lemonade"],
+    answer: "distilled water",
+    explanation: "Distilled water contains only H₂O, while the other choices contain multiple substances."
+  },
+  {
+    text: "What happens to the particles when sugar dissolves in water?",
+    options: ["They disappear from existence", "They turn into water particles", "They spread evenly among the water particles", "They settle immediately at the bottom"],
+    answer: "They spread evenly among the water particles",
+    explanation: "Dissolved sugar particles remain present and become evenly distributed through the water."
+  },
+  {
+    text: "Which property would be most useful for identifying an unknown solid?",
+    options: ["the size of the sample", "the shape of its container", "its melting point", "the day it was collected"],
+    answer: "its melting point",
+    explanation: "Melting point is a characteristic physical property that can help identify a substance."
+  },
+  {
+    text: "Which change is reversible by a simple physical process?",
+    options: ["burning gasoline", "rusting a nail", "dissolving salt in water", "cooking an egg"],
+    answer: "dissolving salt in water",
+    explanation: "The salt can be recovered by evaporating the water, so no new substance is required to reverse the change."
+  },
+  {
+    text: "Oil and water form two visible layers. How should this mixture be classified?",
+    options: ["homogeneous mixture", "pure substance", "heterogeneous mixture", "element"],
+    answer: "heterogeneous mixture",
+    explanation: "The visible layers show that the mixture is not uniform, so it is heterogeneous."
+  },
+  {
+    text: "Which statement about compounds is correct?",
+    options: ["Their elements are chemically combined", "Their parts are always visible", "They can be separated by filtering", "Their composition can vary"],
+    answer: "Their elements are chemically combined",
+    explanation: "A compound is a pure substance made of elements chemically joined in a fixed ratio."
+  }
 ];
 
 var typeLabels = {
   nameToSymbol: "Name → Symbol",
   symbolToName: "Symbol → Name",
-  symbolTrap: "Similar-symbol trap",
-  incorrectPair: "Find the mismatch",
-  mystery: "Mystery element"
+  nameToNumber: "Element → Atomic Number",
+  symbolToNumber: "Symbol → Atomic Number",
+  numberToName: "Atomic Number → Element",
+  numberToSymbol: "Atomic Number → Symbol",
+  matterPractice: "Matter & Mixtures"
 };
 
 var screens = {
@@ -102,22 +287,6 @@ function buildOptions(correct, distractors) {
   return shuffle([correct].concat(distractors.slice(0, 3)));
 }
 
-function nearbyElements(element) {
-  var ranked = elements.slice().sort(function (a, b) {
-    var aScore = symbolSimilarity(element.symbol, a.symbol) + Math.abs(element.n - a.n) / 20;
-    var bScore = symbolSimilarity(element.symbol, b.symbol) + Math.abs(element.n - b.n) / 20;
-    return aScore - bScore;
-  });
-  return ranked.filter(function (item) { return item.n !== element.n; }).slice(0, 8);
-}
-
-function symbolSimilarity(a, b) {
-  var firstPenalty = a.charAt(0) === b.charAt(0) ? 0 : 2;
-  var lengthPenalty = Math.abs(a.length - b.length);
-  var secondPenalty = a.charAt(1) === b.charAt(1) ? 0 : 0.5;
-  return firstPenalty + lengthPenalty + secondPenalty;
-}
-
 function makeNameToSymbol(element) {
   var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.symbol; });
   return {
@@ -127,7 +296,7 @@ function makeNameToSymbol(element) {
     hint: "Choose the correctly capitalized symbol.",
     options: buildOptions(element.symbol, distractors),
     answer: element.symbol,
-    explanation: element.name + " has atomic number " + element.n + " and the symbol " + element.symbol + "."
+    explanation: element.name + " is represented by the chemical symbol " + element.symbol + "."
   };
 }
 
@@ -140,62 +309,89 @@ function makeSymbolToName(element) {
     hint: "Match the symbol to its full element name.",
     options: buildOptions(element.name, distractors),
     answer: element.name,
-    explanation: element.symbol + " is the symbol for " + element.name + ", element " + element.n + "."
+    explanation: element.symbol + " is the chemical symbol for " + element.name + "."
   };
 }
 
-function makeSymbolTrap(element) {
-  var close = nearbyElements(element).slice(0, 3).map(function (item) { return item.symbol; });
+function atomicNumberDistractors(element) {
+  return sample(elements, 3, element.n, "n").map(function (item) { return String(item.n); });
+}
+
+function makeNameToNumber(element) {
   return {
-    type: "symbolTrap",
+    type: "nameToNumber",
     target: element.n,
-    text: "Careful — which symbol belongs to " + element.name + "?",
-    hint: "The choices include symbols that are easy to confuse.",
-    options: buildOptions(element.symbol, close),
-    answer: element.symbol,
-    explanation: "The correct symbol for " + element.name + " is " + element.symbol + ". Capital letters matter."
+    text: "What is the atomic number of " + element.name + "?",
+    hint: "Match the element name to its atomic number.",
+    options: buildOptions(String(element.n), atomicNumberDistractors(element)),
+    answer: String(element.n),
+    explanation: element.name + " (" + element.symbol + ") has atomic number " + element.n + "."
   };
 }
 
-function makeIncorrectPair(element) {
-  var correctOthers = sample(elements, 3, element.n, "n");
-  var wrongSymbolChoices = sample(elements, 1, element.n, "n");
-  var wrongPair = element.name + " — " + wrongSymbolChoices[0].symbol;
-  var correctPairs = correctOthers.map(function (item) { return item.name + " — " + item.symbol; });
+function makeSymbolToNumber(element) {
   return {
-    type: "incorrectPair",
+    type: "symbolToNumber",
     target: element.n,
-    text: "Which element–symbol pairing is incorrect?",
-    hint: "Three pairings are correct. Select the one mismatch.",
-    options: shuffle([wrongPair].concat(correctPairs)),
-    answer: wrongPair,
-    explanation: element.name + " should be paired with " + element.symbol + ", not " + wrongSymbolChoices[0].symbol + "."
+    text: "What is the atomic number of the element with the symbol “" + element.symbol + "”?",
+    hint: "Identify the element, then choose its atomic number.",
+    options: buildOptions(String(element.n), atomicNumberDistractors(element)),
+    answer: String(element.n),
+    explanation: element.symbol + " represents " + element.name + ", which has atomic number " + element.n + "."
   };
 }
 
-function makeMystery(element) {
+function makeNumberToName(element) {
   var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.name; });
   return {
-    type: "mystery",
+    type: "numberToName",
     target: element.n,
-    text: "Mystery element: “" + element.clue + "”",
-    hint: "Which element am I?",
+    text: "Which element has atomic number " + element.n + "?",
+    hint: "Match the atomic number to the element name.",
     options: buildOptions(element.name, distractors),
     answer: element.name,
-    explanation: "The mystery element is " + element.name + " (" + element.symbol + "), atomic number " + element.n + "."
+    explanation: "Atomic number " + element.n + " belongs to " + element.name + " (" + element.symbol + ")."
+  };
+}
+
+function makeNumberToSymbol(element) {
+  var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.symbol; });
+  return {
+    type: "numberToSymbol",
+    target: element.n,
+    text: "Which chemical symbol belongs to atomic number " + element.n + "?",
+    hint: "Match the atomic number to the correctly capitalized symbol.",
+    options: buildOptions(element.symbol, distractors),
+    answer: element.symbol,
+    explanation: "Atomic number " + element.n + " is " + element.name + ", with the symbol " + element.symbol + "."
+  };
+}
+
+function makeMatterQuestion(question) {
+  return {
+    type: "matterPractice",
+    target: "matter-" + matterQuestions.indexOf(question),
+    text: question.text,
+    hint: "Choose the best answer.",
+    options: shuffle(question.options),
+    answer: question.answer,
+    explanation: question.explanation
   };
 }
 
 function generateRound() {
-  var factories = [makeNameToSymbol, makeSymbolToName, makeSymbolTrap, makeIncorrectPair, makeMystery];
   var available = shuffle(elements);
   var questions = [];
 
-  factories.forEach(function (factory, typeIndex) {
-    for (var i = 0; i < 2; i += 1) {
-      var element = available[typeIndex * 2 + i];
-      questions.push(factory(element));
-    }
+  questions.push(makeNameToSymbol(available[0]));
+  questions.push(makeSymbolToName(available[1]));
+  questions.push(makeNameToNumber(available[2]));
+  questions.push(makeSymbolToNumber(available[3]));
+  questions.push(makeNumberToName(available[4]));
+  questions.push(makeNumberToSymbol(available[5]));
+
+  sample(matterQuestions, 4).forEach(function (question) {
+    questions.push(makeMatterQuestion(question));
   });
 
   return shuffle(questions);
