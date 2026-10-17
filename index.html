@@ -31,16 +31,31 @@
         </div>
         <p class="kicker">Matter, mixtures & elements</p>
         <h2>Ready to test your Grade 9 science skills?</h2>
-        <p class="screen-copy">Answer 10 randomly selected questions about element names, symbols, atomic numbers, properties, changes, and mixtures.</p>
+        <p class="screen-copy">Enter a first name or nickname, choose a topic, and answer 10 randomly selected questions.</p>
         <div class="feature-row" aria-label="Quiz details">
           <div><strong>10</strong><span>questions</span></div>
           <div><strong>210</strong><span>question prompts</span></div>
           <div><strong>∞</strong><span>new rounds</span></div>
         </div>
-        <button id="start-button" class="primary-button" type="button">Start Quiz <span aria-hidden="true">→</span></button>
+        <form id="start-form" class="start-form" novalidate>
+          <label for="student-name">First name or nickname</label>
+          <input id="student-name" name="student-name" type="text" maxlength="40" autocomplete="given-name" placeholder="e.g., Maya" required>
+          <p class="privacy-note">Use only a first name or nickname—no last name, email, student number, or other personal details.</p>
+
+          <label for="topic-select">Quiz topic</label>
+          <select id="topic-select" name="topic">
+            <option value="mixed">Mixed Review</option>
+            <option value="symbols">Element Names &amp; Symbols</option>
+            <option value="atomic">Atomic Numbers</option>
+            <option value="matter">Matter &amp; Mixtures</option>
+          </select>
+          <p id="start-error" class="form-error" role="alert"></p>
+        </form>
+        <button id="start-button" class="primary-button" type="submit" form="start-form">Start Quiz <span aria-hidden="true">→</span></button>
       </div>
 
       <div id="quiz-screen" class="screen" aria-live="polite">
+        <p id="active-topic" class="active-topic">Mixed Review</p>
         <div class="quiz-status">
           <div>
             <span class="status-label">Question</span>
@@ -89,6 +104,7 @@
           <div><span id="incorrect-count">0</span><small>Review</small></div>
           <div><span id="percent-score">0%</span><small>Score</small></div>
         </div>
+        <p id="save-status" class="save-status" role="status"></p>
         <button id="play-again-button" class="primary-button" type="button">Play Again <span aria-hidden="true">↻</span></button>
         <button id="review-button" class="text-button" type="button">Review the first 30 elements</button>
       </div>
@@ -106,10 +122,11 @@
       </div>
     </section>
 
-    <p class="footer-note">Built for quick practice on any device.</p>
+    <p class="footer-note">Built for quick practice on any device. <a href="admin.html">Teacher results</a></p>
   </main>
 
   <noscript>This quiz needs JavaScript enabled to run.</noscript>
+  <script src="config.js"></script>
   <script src="app.js" defer></script>
 </body>
 </html>

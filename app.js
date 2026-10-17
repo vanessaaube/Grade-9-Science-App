@@ -226,6 +226,13 @@ var typeLabels = {
   matterPractice: "Matter & Mixtures"
 };
 
+var topicLabels = {
+  mixed: "Mixed Review",
+  symbols: "Element Names & Symbols",
+  atomic: "Atomic Numbers",
+  matter: "Matter & Mixtures"
+};
+
 var screens = {
   start: document.getElementById("start-screen"),
   quiz: document.getElementById("quiz-screen"),
@@ -235,6 +242,10 @@ var screens = {
 
 var els = {
   startButton: document.getElementById("start-button"),
+  studentName: document.getElementById("student-name"),
+  topicSelect: document.getElementById("topic-select"),
+  startError: document.getElementById("start-error"),
+  activeTopic: document.getElementById("active-topic"),
   questionNumber: document.getElementById("question-number"),
   questionTotal: document.getElementById("question-total"),
   score: document.getElementById("score"),
@@ -255,6 +266,7 @@ var els = {
   correctCount: document.getElementById("correct-count"),
   incorrectCount: document.getElementById("incorrect-count"),
   percentScore: document.getElementById("percent-score"),
+  saveStatus: document.getElementById("save-status"),
   playAgainButton: document.getElementById("play-again-button"),
   reviewButton: document.getElementById("review-button"),
   closeStudyButton: document.getElementById("close-study-button"),
@@ -262,7 +274,16 @@ var els = {
   elementGrid: document.getElementById("element-grid")
 };
 
-var state = { questions: [], index: 0, score: 0, answered: false };
+var state = {
+  questions: [],
+  index: 0,
+  score: 0,
+  answered: false,
+  studentName: "",
+  topic: "mixed",
+  incorrect: [],
+  attemptSaved: false
+};
 var letters = ["A", "B", "C", "D"];
 
 function shuffle(items) {
@@ -290,6 +311,7 @@ function buildOptions(correct, distractors) {
 function makeNameToSymbol(element) {
   var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.symbol; });
   return {
+    id: "name-to-symbol-" + element.n,
     type: "nameToSymbol",
     target: element.n,
     text: "What is the chemical symbol for " + element.name + "?",
@@ -303,6 +325,7 @@ function makeNameToSymbol(element) {
 function makeSymbolToName(element) {
   var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.name; });
   return {
+    id: "symbol-to-name-" + element.n,
     type: "symbolToName",
     target: element.n,
     text: "Which element is represented by “" + element.symbol + "”?",
@@ -319,6 +342,7 @@ function atomicNumberDistractors(element) {
 
 function makeNameToNumber(element) {
   return {
+    id: "name-to-number-" + element.n,
     type: "nameToNumber",
     target: element.n,
     text: "What is the atomic number of " + element.name + "?",
@@ -331,6 +355,7 @@ function makeNameToNumber(element) {
 
 function makeSymbolToNumber(element) {
   return {
+    id: "symbol-to-number-" + element.n,
     type: "symbolToNumber",
     target: element.n,
     text: "What is the atomic number of the element with the symbol “" + element.symbol + "”?",
@@ -344,6 +369,7 @@ function makeSymbolToNumber(element) {
 function makeNumberToName(element) {
   var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.name; });
   return {
+    id: "number-to-name-" + element.n,
     type: "numberToName",
     target: element.n,
     text: "Which element has atomic number " + element.n + "?",
@@ -357,6 +383,7 @@ function makeNumberToName(element) {
 function makeNumberToSymbol(element) {
   var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.symbol; });
   return {
+    id: "number-to-symbol-" + element.n,
     type: "numberToSymbol",
     target: element.n,
     text: "Which chemical symbol belongs to atomic number " + element.n + "?",
@@ -368,9 +395,11 @@ function makeNumberToSymbol(element) {
 }
 
 function makeMatterQuestion(question) {
+  var questionIndex = matterQuestions.indexOf(question);
   return {
+    id: "matter-" + (questionIndex + 1),
     type: "matterPractice",
-    target: "matter-" + matterQuestions.indexOf(question),
+    target: "matter-" + questionIndex,
     text: question.text,
     hint: "Choose the best answer.",
     options: shuffle(question.options),
@@ -379,7 +408,35 @@ function makeMatterQuestion(question) {
   };
 }
 
-function generateRound() {
+function generateSymbolRound() {
+  var available = shuffle(elements);
+  var questions = [];
+  available.slice(0, 5).forEach(function (element) { questions.push(makeNameToSymbol(element)); });
+  available.slice(5, 10).forEach(function (element) { questions.push(makeSymbolToName(element)); });
+  return shuffle(questions);
+}
+
+function generateAtomicRound() {
+  var available = shuffle(elements);
+  return shuffle([
+    makeNameToNumber(available[0]),
+    makeNameToNumber(available[1]),
+    makeNameToNumber(available[2]),
+    makeSymbolToNumber(available[3]),
+    makeSymbolToNumber(available[4]),
+    makeSymbolToNumber(available[5]),
+    makeNumberToName(available[6]),
+    makeNumberToName(available[7]),
+    makeNumberToSymbol(available[8]),
+    makeNumberToSymbol(available[9])
+  ]);
+}
+
+function generateMatterRound() {
+  return sample(matterQuestions, 10).map(makeMatterQuestion);
+}
+
+function generateMixedRound() {
   var available = shuffle(elements);
   var questions = [];
 
@@ -397,6 +454,13 @@ function generateRound() {
   return shuffle(questions);
 }
 
+function generateRound(topic) {
+  if (topic === "symbols") { return generateSymbolRound(); }
+  if (topic === "atomic") { return generateAtomicRound(); }
+  if (topic === "matter") { return generateMatterRound(); }
+  return generateMixedRound();
+}
+
 function showScreen(name) {
   Object.keys(screens).forEach(function (key) {
     screens[key].classList.toggle("active", key === name);
@@ -405,11 +469,34 @@ function showScreen(name) {
 }
 
 function startQuiz() {
-  state.questions = generateRound();
+  var studentName = els.studentName.value.trim().replace(/\s+/g, " ");
+  if (!studentName) {
+    els.startError.textContent = "Enter a first name or nickname.";
+    els.studentName.focus();
+    return;
+  }
+  if (studentName.length > 40) {
+    els.startError.textContent = "Keep the first name or nickname to 40 characters or fewer.";
+    els.studentName.focus();
+    return;
+  }
+  if (!/^[\p{L}\p{M} .'’\-]+$/u.test(studentName)) {
+    els.startError.textContent = "Use a first name or nickname only. Numbers and email addresses are not accepted.";
+    els.studentName.focus();
+    return;
+  }
+
+  els.startError.textContent = "";
+  state.studentName = studentName;
+  state.topic = els.topicSelect.value;
+  state.questions = generateRound(state.topic);
   state.index = 0;
   state.score = 0;
   state.answered = false;
+  state.incorrect = [];
+  state.attemptSaved = false;
   els.score.textContent = "0";
+  els.activeTopic.textContent = topicLabels[state.topic];
   els.questionTotal.textContent = String(state.questions.length);
   showScreen("quiz");
   renderQuestion();
@@ -475,6 +562,13 @@ function selectAnswer(selectedButton, selectedAnswer) {
     els.feedbackIcon.textContent = "✓";
     els.feedbackTitle.textContent = "Correct!";
   } else {
+    state.incorrect.push({
+      question_id: question.id,
+      question_type: typeLabels[question.type],
+      question_text: question.text,
+      selected_answer: selectedAnswer,
+      correct_answer: question.answer
+    });
     els.feedback.classList.add("is-incorrect");
     els.feedbackIcon.textContent = "×";
     els.feedbackTitle.textContent = "Not quite";
@@ -497,6 +591,54 @@ function nextQuestion() {
   }
 }
 
+function trackingIsConfigured() {
+  return window.QUIZ_CONFIG &&
+    /^https:\/\/.+\.supabase\.co$/i.test(window.QUIZ_CONFIG.supabaseUrl || "") &&
+    (window.QUIZ_CONFIG.supabaseAnonKey || "").length > 40;
+}
+
+function saveAttempt(percent) {
+  if (state.attemptSaved) { return Promise.resolve(); }
+  if (!trackingIsConfigured()) {
+    els.saveStatus.className = "save-status warning";
+    els.saveStatus.textContent = "Result shown, but tracking is not configured yet.";
+    return Promise.resolve();
+  }
+
+  els.saveStatus.className = "save-status saving";
+  els.saveStatus.textContent = "Saving this attempt…";
+  var config = window.QUIZ_CONFIG;
+  var payload = {
+    student_name: state.studentName,
+    quiz_topic: topicLabels[state.topic],
+    topic_key: state.topic,
+    score: state.score,
+    total_questions: state.questions.length,
+    percentage: percent,
+    incorrect_questions: state.incorrect,
+    app_version: "2.0"
+  };
+
+  return fetch(config.supabaseUrl + "/rest/v1/quiz_attempts", {
+    method: "POST",
+    headers: {
+      "apikey": config.supabaseAnonKey,
+      "Authorization": "Bearer " + config.supabaseAnonKey,
+      "Content-Type": "application/json",
+      "Prefer": "return=minimal"
+    },
+    body: JSON.stringify(payload)
+  }).then(function (response) {
+    if (!response.ok) { throw new Error("Save failed with status " + response.status); }
+    state.attemptSaved = true;
+    els.saveStatus.className = "save-status saved";
+    els.saveStatus.textContent = "Attempt saved for " + state.studentName + ".";
+  }).catch(function () {
+    els.saveStatus.className = "save-status warning";
+    els.saveStatus.textContent = "Your score is shown, but this attempt could not be saved. Check the connection and tell your teacher.";
+  });
+}
+
 function showResults() {
   var percent = Math.round(state.score / state.questions.length * 100);
   var heading;
@@ -504,13 +646,13 @@ function showResults() {
 
   if (state.score === 10) {
     heading = "Perfect score!";
-    message = "Outstanding — you have a strong command of the first 30 elements.";
+    message = "Outstanding — you have a strong command of this topic.";
   } else if (state.score >= 8) {
     heading = "Excellent work!";
-    message = "You know these elements well. One more round could make your recall even faster.";
+    message = "You know this material well. One more round could make your recall even faster.";
   } else if (state.score >= 6) {
     heading = "Good progress!";
-    message = "You have a solid base. Review the symbols that tripped you up, then try again.";
+    message = "You have a solid base. Review what tripped you up, then try again.";
   } else {
     heading = "Keep building!";
     message = "Every round strengthens your recall. Use the quick reference, then take another shot.";
@@ -522,7 +664,10 @@ function showResults() {
   els.correctCount.textContent = String(state.score);
   els.incorrectCount.textContent = String(state.questions.length - state.score);
   els.percentScore.textContent = percent + "%";
+  els.saveStatus.className = "save-status saving";
+  els.saveStatus.textContent = "Preparing to save this attempt…";
   showScreen("result");
+  saveAttempt(percent);
   els.playAgainButton.focus({ preventScroll: true });
 }
 
@@ -540,12 +685,15 @@ function buildElementGrid() {
   els.elementGrid.appendChild(fragment);
 }
 
-els.startButton.addEventListener("click", startQuiz);
+document.getElementById("start-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  startQuiz();
+});
 els.nextButton.addEventListener("click", nextQuestion);
-els.playAgainButton.addEventListener("click", startQuiz);
+els.playAgainButton.addEventListener("click", function () { showScreen("start"); });
 els.reviewButton.addEventListener("click", function () { showScreen("study"); });
 els.closeStudyButton.addEventListener("click", function () { showScreen("result"); });
-els.studyPlayButton.addEventListener("click", startQuiz);
+els.studyPlayButton.addEventListener("click", function () { showScreen("start"); });
 
 document.addEventListener("keydown", function (event) {
   if (!screens.quiz.classList.contains("active")) { return; }

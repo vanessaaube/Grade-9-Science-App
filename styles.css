@@ -40,7 +40,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-button { font: inherit; }
+button, input, select { font: inherit; }
 
 button, .answer-button {
   -webkit-tap-highlight-color: transparent;
@@ -168,6 +168,14 @@ button, .answer-button {
 .feature-row strong { color: var(--navy); font-size: 21px; }
 .feature-row span { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
 
+.start-form { margin: 0 0 18px; text-align: left; }
+.start-form label { display: block; margin: 13px 0 7px; color: var(--navy); font-size: 13px; font-weight: 850; }
+.start-form input, .start-form select { width: 100%; min-height: 51px; padding: 11px 13px; color: var(--ink); border: 1px solid #cbdbe6; border-radius: 12px; background: #fff; }
+.start-form input:focus, .start-form select:focus { outline: 3px solid rgba(24,119,242,.17); border-color: var(--blue); }
+.privacy-note { margin: -2px 0 3px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.form-error { min-height: 19px; margin: 8px 0 0; color: #a43131; font-size: 12px; font-weight: 800; }
+.active-topic { margin: 0 0 12px; color: var(--blue); font-size: 12px; font-weight: 900; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+
 .primary-button {
   width: 100%;
   min-height: 54px;
@@ -272,6 +280,10 @@ button, .answer-button {
 .result-stats span, .result-stats small { display: block; }
 .result-stats span { color: var(--navy); font-size: 20px; font-weight: 900; }
 .result-stats small { margin-top: 3px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.save-status { min-height: 21px; margin: -9px 0 15px; padding: 8px 10px; border-radius: 10px; font-size: 12px; font-weight: 750; }
+.save-status.saving { color: #466177; background: #f1f6f9; }
+.save-status.saved { color: #12623f; background: var(--mint-soft); }
+.save-status.warning { color: #8a4f10; background: #fff5df; }
 
 .text-button { margin: 17px 0 0; padding: 7px; color: var(--blue); border: 0; background: none; cursor: pointer; font-weight: 800; }
 .study-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
@@ -285,6 +297,7 @@ button, .answer-button {
 .element-symbol { color: var(--navy); font-size: clamp(16px, 4vw, 23px); font-weight: 900; line-height: 1; text-align: center; }
 .element-name { overflow: hidden; color: #4e6679; font-size: clamp(7px, 1.7vw, 9px); font-weight: 700; text-overflow: ellipsis; white-space: nowrap; text-align: center; }
 .footer-note { margin: 0; color: #698095; font-size: 12px; }
+.footer-note a { color: #3c647e; font-weight: 800; }
 
 @media (max-width: 560px) {
   .app-shell { justify-content: flex-start; padding-top: max(10px, env(safe-area-inset-top)); padding-left: max(10px, env(safe-area-inset-left)); padding-right: max(10px, env(safe-area-inset-right)); }
