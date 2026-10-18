@@ -7,7 +7,7 @@ The quiz remains a static GitHub Pages site. Attempt tracking uses **Supabase** 
 The student form accepts **only a first name or nickname**. Tell students not to enter a surname, email address, student number, or other personal details. Each completed attempt stores:
 
 - first name or nickname
-- selected quiz topic
+- fixed quiz name
 - server-recorded date and time
 - score, total, and percentage
 - only the questions answered incorrectly, including the selected and correct answers
@@ -73,7 +73,7 @@ GitHub Pages will redeploy automatically. The student quiz remains at the existi
 
 ## 6. Test before student use
 
-1. Open the student quiz, enter a test nickname, select each topic in turn, and complete a quiz.
+1. Open the student quiz, enter a test nickname, and complete a quiz.
 2. Confirm the result screen says the attempt was saved.
 3. Open `admin.html` and sign in with the Supabase admin account.
 4. Confirm that the test attempt appears in history and the summary updates.

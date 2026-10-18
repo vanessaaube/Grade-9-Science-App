@@ -1,21 +1,16 @@
 # Element Quest — Grade 9 Science Quiz with Attempt Tracking
 
-A polished, mobile-friendly Grade 9 Science quiz for GitHub Pages. It includes the names, symbols, and atomic numbers of the first 30 elements plus matter, mixtures, physical and chemical properties, changes, solutions, and separation methods.
+A polished, mobile-friendly Grade 9 Science quiz for GitHub Pages. It includes the names and chemical symbols of the first 30 elements, atomic structure and periodic-table concepts, plus matter, mixtures, physical and chemical properties, changes, solutions, and separation methods.
 
 ## Student experience
 
 Before each 10-question quiz, the student:
 
 1. enters **only a first name or nickname**;
-2. chooses a topic; and
+2. starts the quiz; and
 3. completes a randomized quiz with immediate feedback.
 
-Available topics:
-
-- **Mixed Review** — element names/symbols, atomic numbers, and matter/mixtures
-- **Element Names & Symbols** — practice in both directions
-- **Atomic Numbers** — name or symbol → atomic number and atomic number → name or symbol
-- **Matter & Mixtures** — all 30 existing material questions
+There is one unified **Grade 9 Science Review** quiz. Each round draws from the complete bank of element names/symbols, atomic structure, periodic-table concepts, and matter/mixtures questions.
 
 The result screen shows score and percentage. When tracking is configured, each completed attempt is saved automatically.
 
@@ -34,7 +29,7 @@ Administrator data access is protected by Supabase Authentication and database R
 
 ## Minimal student data
 
-The quiz asks for and stores only a **first name or nickname**. It does not request a surname, email address, student number, device identifier, location, or other student detail. The stored attempt contains the selected topic, server date/time, score, percentage, and questions answered incorrectly.
+The quiz asks for and stores only a **first name or nickname**. It does not request a surname, email address, student number, device identifier, location, or other student detail. The stored attempt contains the fixed quiz name, server date/time, score, percentage, and questions answered incorrectly.
 
 ## Database setup
 
@@ -58,7 +53,7 @@ Do not put a Supabase `service_role` key or teacher password in any website file
 
 - `index.html` — student quiz
 - `styles.css` — student quiz styles
-- `app.js` — question bank, topic selection, scoring, and attempt submission
+- `app.js` — question bank, randomized selection, scoring, and attempt submission
 - `admin.html` — protected teacher results page
 - `admin.css` — teacher dashboard styles
 - `admin.js` — authentication, result retrieval, filtering, summaries, and CSV export
@@ -68,17 +63,14 @@ Do not put a Supabase `service_role` key or teacher password in any website file
 
 ## Question bank
 
-The app preserves the complete 210-prompt bank:
+The app contains a 120-prompt bank:
 
 - 30 element name → symbol prompts
 - 30 symbol → element name prompts
-- 30 element name → atomic number prompts
-- 30 symbol → atomic number prompts
-- 30 atomic number → element name prompts
-- 30 atomic number → symbol prompts
+- 30 atomic structure and periodic-table concept questions
 - 30 matter and mixtures questions
 
-Every playthrough randomly selects 10 questions based on the chosen topic.
+Every playthrough randomly selects 10 distinct questions from the complete 120-prompt bank.
 
 ## Browser support
 

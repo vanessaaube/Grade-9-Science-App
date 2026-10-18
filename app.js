@@ -216,21 +216,198 @@ var matterQuestions = [
   }
 ];
 
+var atomicStructureQuestions = [
+  {
+    text: "The number of protons in an element’s nucleus can be found using its:",
+    options: ["chemical symbol", "atomic number", "mass number", "charge"],
+    answer: "atomic number",
+    explanation: "An element’s atomic number is equal to the number of protons in the nucleus."
+  },
+  {
+    text: "As an analogy, Ernest Rutherford’s atomic model is often called the:",
+    options: ["Raisin Bun Model", "Billiard Ball Model", "Quantum Model", "Planetary Model"],
+    answer: "Planetary Model",
+    explanation: "Rutherford’s model pictured electrons moving around a small, positively charged nucleus, similar to planets moving around the Sun."
+  },
+  {
+    text: "Where is most of the mass of an atom located?",
+    options: ["nucleus", "neutrons only", "electrons", "protons only"],
+    answer: "nucleus",
+    explanation: "The nucleus contains protons and neutrons, which account for nearly all of an atom’s mass."
+  },
+  {
+    text: "Which particle did J.J. Thomson discover?",
+    options: ["alpha particle", "electron", "proton", "atom"],
+    answer: "electron",
+    explanation: "J.J. Thomson’s cathode-ray experiments led to the discovery of the electron."
+  },
+  {
+    text: "Who proposed that electrons orbit the nucleus in specific energy levels called shells or orbitals?",
+    options: ["Niels Bohr", "John Dalton", "J.J. Thomson", "Ernest Rutherford"],
+    answer: "Niels Bohr",
+    explanation: "Niels Bohr proposed that electrons occupy specific energy levels around the nucleus."
+  },
+  {
+    text: "Who first proposed a model of the atom with electrons moving around a positively charged nucleus?",
+    options: ["Aristotle", "John Dalton", "J.J. Thomson", "Ernest Rutherford"],
+    answer: "Ernest Rutherford",
+    explanation: "Ernest Rutherford proposed the nuclear model after evidence showed that an atom has a small, positive nucleus."
+  },
+  {
+    text: "As an analogy, the atomic model proposed by J.J. Thomson is often called the:",
+    options: ["Quantum Model", "Raisin Bun Model", "Billiard Ball Model", "Planetary Model"],
+    answer: "Raisin Bun Model",
+    explanation: "Thomson pictured negative electrons embedded in a positively charged sphere, like raisins in a bun."
+  },
+  {
+    text: "Which subatomic particle has a positive charge?",
+    options: ["proton", "electron", "neutron", "atom"],
+    answer: "proton",
+    explanation: "A proton has a positive charge; an electron is negative and a neutron is neutral."
+  },
+  {
+    text: "Which particle exists in set energy levels, or orbitals, around an atom’s nucleus?",
+    options: ["proton", "electron", "neutron", "ion"],
+    answer: "electron",
+    explanation: "Electrons occupy energy levels around the nucleus."
+  },
+  {
+    text: "How many protons and electrons are in a neutral helium atom?",
+    options: ["1 proton and 1 electron", "2 protons and 2 electrons", "2 protons and 4 electrons", "4 protons and 2 electrons"],
+    answer: "2 protons and 2 electrons",
+    explanation: "Helium has two protons. A neutral atom has equal numbers of protons and electrons, so helium also has two electrons."
+  },
+  {
+    text: "Helium has 2 protons and a mass number of 4. How many neutrons does it have?",
+    options: ["1", "2", "4", "6"],
+    answer: "2",
+    explanation: "Neutrons equal mass number minus protons: 4 − 2 = 2."
+  },
+  {
+    text: "A neutral magnesium-24 atom has an atomic number of 12. How many protons, electrons, and neutrons does it have?",
+    options: ["12 protons, 12 electrons, 12 neutrons", "12 protons, 24 electrons, 12 neutrons", "24 protons, 12 electrons, 12 neutrons", "12 protons, 12 electrons, 24 neutrons"],
+    answer: "12 protons, 12 electrons, 12 neutrons",
+    explanation: "Atomic number 12 gives 12 protons, neutrality gives 12 electrons, and 24 − 12 gives 12 neutrons."
+  },
+  {
+    text: "In what direction do periods run on the periodic table?",
+    options: ["horizontally from left to right", "vertically from top to bottom", "diagonally from upper left", "in a circle around the centre"],
+    answer: "horizontally from left to right",
+    explanation: "Periods are the horizontal rows of the periodic table."
+  },
+  {
+    text: "Francium and lithium are both in Group 1. To which family do they belong?",
+    options: ["alkali metals", "alkaline earth metals", "halogens", "noble gases"],
+    answer: "alkali metals",
+    explanation: "Group 1 elements are called the alkali metals."
+  },
+  {
+    text: "Which of these is an unreactive noble gas?",
+    options: ["carbon dioxide", "oxygen", "neon", "hydrogen"],
+    answer: "neon",
+    explanation: "Neon is a Group 18 noble gas and is very unreactive."
+  },
+  {
+    text: "Which element is located in Period 2 and Group 16?",
+    options: ["oxygen", "sulfur", "fluorine", "nitrogen"],
+    answer: "oxygen",
+    explanation: "Oxygen is in the second row, Period 2, and in Group 16."
+  },
+  {
+    text: "What does the staircase line on the periodic table separate?",
+    options: ["metals from non-metals", "solids from liquids", "natural from synthetic elements", "atoms from ions"],
+    answer: "metals from non-metals",
+    explanation: "The staircase marks the broad boundary between metals and non-metals, with metalloids located along it."
+  },
+  {
+    text: "Fluorine, chlorine, bromine, and iodine belong to which group?",
+    options: ["Group 1 — alkali metals", "Group 2 — alkaline earth metals", "Group 17 — halogens", "Group 18 — noble gases"],
+    answer: "Group 17 — halogens",
+    explanation: "Fluorine, chlorine, bromine, and iodine are halogens in Group 17."
+  },
+  {
+    text: "In a neutral atom, how does the number of electrons compare with the number of protons?",
+    options: ["They are equal", "There are always twice as many electrons", "There is always one more proton", "They are unrelated"],
+    answer: "They are equal",
+    explanation: "Equal numbers of positive protons and negative electrons give an atom no overall charge."
+  },
+  {
+    text: "Which subatomic particle has no electrical charge?",
+    options: ["proton", "electron", "neutron", "ion"],
+    answer: "neutron",
+    explanation: "A neutron is electrically neutral."
+  },
+  {
+    text: "Which particles are found together in the nucleus of an atom?",
+    options: ["protons and neutrons", "protons and electrons", "electrons and neutrons", "electrons only"],
+    answer: "protons and neutrons",
+    explanation: "The nucleus is made of protons and neutrons; electrons occupy the space around it."
+  },
+  {
+    text: "John Dalton’s atomic model is commonly compared with which object?",
+    options: ["a billiard ball", "a raisin bun", "a solar system", "an electron cloud"],
+    answer: "a billiard ball",
+    explanation: "Dalton described atoms as tiny, solid spheres, leading to the Billiard Ball Model analogy."
+  },
+  {
+    text: "Which experiment provided evidence for Rutherford’s small, dense nucleus?",
+    options: ["the gold-foil experiment", "the oil-drop experiment", "a flame test", "paper chromatography"],
+    answer: "the gold-foil experiment",
+    explanation: "Unexpected deflections of alpha particles in the gold-foil experiment showed that positive charge and mass are concentrated in a tiny nucleus."
+  },
+  {
+    text: "For the first 30 elements, what does an element’s period number tell you about its atoms?",
+    options: ["the number of occupied electron shells", "the number of neutrons", "the exact atomic mass", "the element’s state of matter"],
+    answer: "the number of occupied electron shells",
+    explanation: "The period number corresponds to the number of occupied electron energy levels in these elements."
+  },
+  {
+    text: "In what direction do groups run on the periodic table?",
+    options: ["vertically from top to bottom", "horizontally from left to right", "diagonally from lower left", "in rings around the centre"],
+    answer: "vertically from top to bottom",
+    explanation: "Groups are the vertical columns of the periodic table."
+  },
+  {
+    text: "Magnesium and calcium belong to which periodic-table family?",
+    options: ["alkali metals", "alkaline earth metals", "halogens", "noble gases"],
+    answer: "alkaline earth metals",
+    explanation: "Magnesium and calcium are Group 2 elements, called the alkaline earth metals."
+  },
+  {
+    text: "Which family contains highly reactive non-metals such as fluorine and chlorine?",
+    options: ["halogens", "noble gases", "alkali metals", "transition metals"],
+    answer: "halogens",
+    explanation: "The halogens are reactive non-metals in Group 17."
+  },
+  {
+    text: "Why are noble gases generally unreactive?",
+    options: ["Their outer electron shell is full", "They have no nucleus", "They contain only neutrons", "Their electrons have no charge"],
+    answer: "Their outer electron shell is full",
+    explanation: "A full outer electron shell is stable, so noble gases have little tendency to react."
+  },
+  {
+    text: "Where are most metals located relative to the staircase on the periodic table?",
+    options: ["to the left of the staircase", "to the right of the staircase", "only along the staircase", "only in the top row"],
+    answer: "to the left of the staircase",
+    explanation: "Most metals are located on the left side and centre of the periodic table, to the left of the staircase."
+  },
+  {
+    text: "Atoms of the same element that have different numbers of neutrons are called:",
+    options: ["isotopes", "ions", "compounds", "mixtures"],
+    answer: "isotopes",
+    explanation: "Isotopes have the same number of protons but different numbers of neutrons."
+  }
+];
+
 var typeLabels = {
   nameToSymbol: "Name → Symbol",
   symbolToName: "Symbol → Name",
-  nameToNumber: "Element → Atomic Number",
-  symbolToNumber: "Symbol → Atomic Number",
-  numberToName: "Atomic Number → Element",
-  numberToSymbol: "Atomic Number → Symbol",
+  atomicStructure: "Atomic Structure & Periodic Table",
   matterPractice: "Matter & Mixtures"
 };
 
 var topicLabels = {
-  mixed: "Mixed Review",
-  symbols: "Element Names & Symbols",
-  atomic: "Atomic Numbers",
-  matter: "Matter & Mixtures"
+  mixed: "Grade 9 Science Review"
 };
 
 var screens = {
@@ -243,7 +420,6 @@ var screens = {
 var els = {
   startButton: document.getElementById("start-button"),
   studentName: document.getElementById("student-name"),
-  topicSelect: document.getElementById("topic-select"),
   startError: document.getElementById("start-error"),
   activeTopic: document.getElementById("active-topic"),
   questionNumber: document.getElementById("question-number"),
@@ -336,64 +512,6 @@ function makeSymbolToName(element) {
   };
 }
 
-function atomicNumberDistractors(element) {
-  return sample(elements, 3, element.n, "n").map(function (item) { return String(item.n); });
-}
-
-function makeNameToNumber(element) {
-  return {
-    id: "name-to-number-" + element.n,
-    type: "nameToNumber",
-    target: element.n,
-    text: "What is the atomic number of " + element.name + "?",
-    hint: "Match the element name to its atomic number.",
-    options: buildOptions(String(element.n), atomicNumberDistractors(element)),
-    answer: String(element.n),
-    explanation: element.name + " (" + element.symbol + ") has atomic number " + element.n + "."
-  };
-}
-
-function makeSymbolToNumber(element) {
-  return {
-    id: "symbol-to-number-" + element.n,
-    type: "symbolToNumber",
-    target: element.n,
-    text: "What is the atomic number of the element with the symbol “" + element.symbol + "”?",
-    hint: "Identify the element, then choose its atomic number.",
-    options: buildOptions(String(element.n), atomicNumberDistractors(element)),
-    answer: String(element.n),
-    explanation: element.symbol + " represents " + element.name + ", which has atomic number " + element.n + "."
-  };
-}
-
-function makeNumberToName(element) {
-  var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.name; });
-  return {
-    id: "number-to-name-" + element.n,
-    type: "numberToName",
-    target: element.n,
-    text: "Which element has atomic number " + element.n + "?",
-    hint: "Match the atomic number to the element name.",
-    options: buildOptions(element.name, distractors),
-    answer: element.name,
-    explanation: "Atomic number " + element.n + " belongs to " + element.name + " (" + element.symbol + ")."
-  };
-}
-
-function makeNumberToSymbol(element) {
-  var distractors = sample(elements, 3, element.n, "n").map(function (item) { return item.symbol; });
-  return {
-    id: "number-to-symbol-" + element.n,
-    type: "numberToSymbol",
-    target: element.n,
-    text: "Which chemical symbol belongs to atomic number " + element.n + "?",
-    hint: "Match the atomic number to the correctly capitalized symbol.",
-    options: buildOptions(element.symbol, distractors),
-    answer: element.symbol,
-    explanation: "Atomic number " + element.n + " is " + element.name + ", with the symbol " + element.symbol + "."
-  };
-}
-
 function makeMatterQuestion(question) {
   var questionIndex = matterQuestions.indexOf(question);
   return {
@@ -408,57 +526,38 @@ function makeMatterQuestion(question) {
   };
 }
 
-function generateSymbolRound() {
-  var available = shuffle(elements);
-  var questions = [];
-  available.slice(0, 5).forEach(function (element) { questions.push(makeNameToSymbol(element)); });
-  available.slice(5, 10).forEach(function (element) { questions.push(makeSymbolToName(element)); });
-  return shuffle(questions);
+function makeAtomicStructureQuestion(question) {
+  var questionIndex = atomicStructureQuestions.indexOf(question);
+  return {
+    id: "atomic-structure-" + (questionIndex + 1),
+    type: "atomicStructure",
+    target: "atomic-structure-" + questionIndex,
+    text: question.text,
+    hint: "Choose the best answer.",
+    options: shuffle(question.options),
+    answer: question.answer,
+    explanation: question.explanation
+  };
 }
 
-function generateAtomicRound() {
-  var available = shuffle(elements);
-  return shuffle([
-    makeNameToNumber(available[0]),
-    makeNameToNumber(available[1]),
-    makeNameToNumber(available[2]),
-    makeSymbolToNumber(available[3]),
-    makeSymbolToNumber(available[4]),
-    makeSymbolToNumber(available[5]),
-    makeNumberToName(available[6]),
-    makeNumberToName(available[7]),
-    makeNumberToSymbol(available[8]),
-    makeNumberToSymbol(available[9])
-  ]);
-}
-
-function generateMatterRound() {
-  return sample(matterQuestions, 10).map(makeMatterQuestion);
-}
-
-function generateMixedRound() {
-  var available = shuffle(elements);
+function buildFullQuestionBank() {
   var questions = [];
 
-  questions.push(makeNameToSymbol(available[0]));
-  questions.push(makeSymbolToName(available[1]));
-  questions.push(makeNameToNumber(available[2]));
-  questions.push(makeSymbolToNumber(available[3]));
-  questions.push(makeNumberToName(available[4]));
-  questions.push(makeNumberToSymbol(available[5]));
-
-  sample(matterQuestions, 4).forEach(function (question) {
+  elements.forEach(function (element) {
+    questions.push(makeNameToSymbol(element));
+    questions.push(makeSymbolToName(element));
+  });
+  atomicStructureQuestions.forEach(function (question) {
+    questions.push(makeAtomicStructureQuestion(question));
+  });
+  matterQuestions.forEach(function (question) {
     questions.push(makeMatterQuestion(question));
   });
-
-  return shuffle(questions);
+  return questions;
 }
 
-function generateRound(topic) {
-  if (topic === "symbols") { return generateSymbolRound(); }
-  if (topic === "atomic") { return generateAtomicRound(); }
-  if (topic === "matter") { return generateMatterRound(); }
-  return generateMixedRound();
+function generateRound() {
+  return sample(buildFullQuestionBank(), 10);
 }
 
 function showScreen(name) {
@@ -488,8 +587,8 @@ function startQuiz() {
 
   els.startError.textContent = "";
   state.studentName = studentName;
-  state.topic = els.topicSelect.value;
-  state.questions = generateRound(state.topic);
+  state.topic = "mixed";
+  state.questions = generateRound();
   state.index = 0;
   state.score = 0;
   state.answered = false;
