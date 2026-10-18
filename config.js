@@ -10,6 +10,6 @@
   service_role key or an admin password in this file.
 */
 window.QUIZ_CONFIG = {
-  supabaseUrl: "https://YOUR_PROJECT_ID.supabase.co",
-  supabaseAnonKey: "YOUR_SUPABASE_ANON_KEY"
+  supabaseUrl: "https://haykrsgkxczcizscmlmu.supabase.co",
+  supabaseAnonKey: "sb_publishable_ap70CL1ZV5TKVEVS2S6fXQ_ZQv4-fFC"
 };
